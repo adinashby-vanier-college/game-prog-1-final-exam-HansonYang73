@@ -51,5 +51,6 @@ public class MyWorld extends World
         hero.setRotation(180);
         hero.setLocation(742, 58);
         hero.setLocation(734, 54);
+        canon.setLocation(88,126);
     }
 }
