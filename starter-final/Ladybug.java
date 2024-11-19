@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -14,5 +13,32 @@ public class Ladybug extends Actor
      */
     public void act()
     {
+        moveAndTurn();
+        checkWinAndTransition();
+    }
+    
+    public void moveAndTurn()
+    {
+        if (Greenfoot.isKeyDown("left")) {
+            turn(-5);
+        }
+        if (Greenfoot.isKeyDown("up")) {
+            move(5);
+        }
+        if (Greenfoot.isKeyDown("down")) {
+            move(-5);
+        }
+        if (Greenfoot.isKeyDown("right")) {
+            turn(5);
+        }
+    }
+    
+    public void checkWinAndTransition(){
+        if (isTouching(FinishLocation.class)){
+            World crabWorld = getWorld();
+            World gameWonWorld =  new GameWonWorld();
+            gameWonWorld.started();
+            Greenfoot.setWorld(gameWonWorld);
+        }
     }
 }

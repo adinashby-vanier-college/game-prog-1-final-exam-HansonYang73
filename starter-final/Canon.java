@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -8,11 +7,23 @@ import greenfoot.*;
  */
 public class Canon extends Actor
 {
-
-    /**
-     * Act - do whatever the Canon wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private SimpleTimer cooldown;
+    private int speed;
+    public Canon(){
+        cooldown = new SimpleTimer();
+        speed = (int) (Math.random() * 5) + 4;
+        cooldown.mark();
+    }
+    
     public void act()
     {
+        shoot();
+    }
+    
+    public void shoot(){
+        if (cooldown.millisElapsed() >= 1000){
+            cooldown.mark();
+            getWorld().addObject(new CannonBall(getRotation(), speed), getX(), getY());
+        }
     }
 }
